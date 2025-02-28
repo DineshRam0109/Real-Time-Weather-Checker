@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Search</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            text-align: center;
+            color: black;
+            padding: 20px;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        #weather-container {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            width: 350px;
+            margin: 20px auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        input {
+            padding: 10px;
+            width: 250px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #ff6600;
+            border: none;
+            padding: 10px 15px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #cc5500;
+        }
+
+        #results {
+            margin-top: 20px;
+        }
+
+        .city {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 15px;
+            margin: 5px auto;
+            width: 300px;
+            border-radius: 10px;
+        }
+
+        .weather-icon {
+            width: 60px;
+            height: 60px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Weather Search 🌍</h2>
+    
+    <input type="text" id="city-input" placeholder="Enter city name (e.g., London)" />
+    <button onclick="searchWeather()">Get Weather</button>
+
+    <div id="results"></div>
+
+    <script src="config.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
