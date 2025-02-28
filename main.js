@@ -1,4 +1,14 @@
-const apiKey = config.WEATHER_API_KEY;
+// Debugging: Check if config.js is loaded
+console.log("Config Object:", typeof config !== "undefined" ? config : "Not Loaded");
+
+// API Key handling
+const apiKey = (typeof config !== "undefined" && config.WEATHER_API_KEY) || process.env.NEXT_PUBLIC_WEATHER_API_KEY;
+
+console.log("API Key:", apiKey); // Debugging
+
+if (!apiKey) {
+    console.error("❌ API Key is missing! Check config.js or Vercel environment variables.");
+}
 
 // Function to fetch weather data
 async function searchWeather() {
