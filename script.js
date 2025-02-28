@@ -1,31 +1,15 @@
-// Debugging: Check if config.js is loaded
-console.log("Config Object:", typeof config !== "undefined" ? config : "Not Loaded");
-
-// API Key handling
-const apiKey = (typeof config !== "undefined" && config.WEATHER_API_KEY) || process.env.NEXT_PUBLIC_WEATHER_API_KEY;
-
-console.log("API Key:", apiKey); // Debugging
-
-if (!apiKey) {
-    console.error("❌ API Key is missing! Check config.js or Vercel environment variables.");
-}
-
-// Function to fetch weather data
 async function searchWeather() {
     const city = document.getElementById("city-input").value.trim();
-
     if (!city) {
         alert("Please enter a city name!");
         return;
     }
 
-    // Show loading message
     document.getElementById("results").innerHTML = "<p>Fetching weather...</p>";
 
     try {
-        // API URL with city name and API key
+        const apiKey = config.WEATHER_API_KEY; // Use the secure API key
         const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-
         const response = await fetch(url);
         const data = await response.json();
 
@@ -41,15 +25,13 @@ async function searchWeather() {
     }
 }
 
-// Function to display the fetched weather results
 function displayResults(data) {
     const resultsDiv = document.getElementById("results");
-    resultsDiv.innerHTML = ""; // Clear previous results
+    resultsDiv.innerHTML = "";
 
     const cityElement = document.createElement("div");
     cityElement.className = "city";
 
-    // Extract weather information
     const weatherIcon = data.weather[0].icon;
     const iconUrl = `https://openweathermap.org/img/wn/${weatherIcon}@2x.png`;
 
